@@ -1,3 +1,5 @@
+// eslint-disable-next-line spaced-comment
+/// <reference types="vitest" />
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
@@ -16,4 +18,13 @@ export default defineConfig({
     },
   },
   server: localServer,
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: "./src/setupTests.ts",
+    coverage: {
+      reporter: ["text", "html"],
+      include: ["src/**/*.ts", "src/**/*.tsx"],
+    }
+  },
 });
