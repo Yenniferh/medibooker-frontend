@@ -1,6 +1,5 @@
 import { render } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { vi } from "vitest";
 import Button from "./Button";
 
 describe("Button", () => {
@@ -13,9 +12,10 @@ describe("Button", () => {
 
   test("calls onClick function when button is clicked", async () => {
     const onClickMock = vi.fn();
+    const user = userEvent.setup();
     const { getByText } = render(<Button onClick={onClickMock} text="Click me" />);
     const buttonElement = getByText("Click me");
-    await userEvent.click(buttonElement);
+    await user.click(buttonElement);
     expect(onClickMock).toHaveBeenCalled();
   });
 
@@ -28,9 +28,10 @@ describe("Button", () => {
 
   test("does not call onClick function when disabled button is clicked", async () => {
     const onClickMock = vi.fn();
+    const user = userEvent.setup();
     const { getByText } = render(<Button onClick={onClickMock} text="Disabled Button" disabled />);
     const buttonElement = getByText("Disabled Button");
-    await userEvent.click(buttonElement);
+    await user.click(buttonElement);
     expect(onClickMock).not.toHaveBeenCalled();
   });
 });

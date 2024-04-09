@@ -6,10 +6,8 @@ type State = {
   decrease: () => void;
 };
 
-const useCounterStore = create<State>((set) => ({
+export const useCounterStore = create<State>((set) => ({
   counter: 0,
   increment: () => set((state) => ({ counter: state.counter + 1 })),
   decrease: () => set((state) => ({ counter: state.counter - 1 })),
 }));
-
-export default useCounterStore;

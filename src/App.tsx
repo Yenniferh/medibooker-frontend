@@ -1,4 +1,4 @@
-import useCounterStore from "@/counterStore";
+import { useCounterStore } from "@/counterStore";
 
 function App() {
   const counter = useCounterStore((state) => state.counter);
