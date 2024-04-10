@@ -26,6 +26,12 @@ export default defineConfig({
       reporter: ["text", "html"],
       include: ["src/**/*.ts", "src/**/*.tsx"],
       exclude: ["src/**/*.d.ts", "src/setupTests.ts", "src/main.tsx"],
-    }
+      watermarks: {
+        statements: [80, 95],
+        functions: [80, 95],
+        branches: [80, 95],
+        lines: [80, 95],
+      },
+    },
   },
 });

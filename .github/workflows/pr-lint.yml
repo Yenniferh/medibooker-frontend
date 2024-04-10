@@ -1,0 +1,20 @@
+name: Lint
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    name: Check lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Setup
+        run: yarn install
+      - name: Check formatting
+        run: yarn prettier --check \"src/**/*.{js,jsx,ts,tsx}\"
+      - name: Check linting
+        run: yarn lint
