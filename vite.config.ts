@@ -25,7 +25,7 @@ export default defineConfig({
     coverage: {
       reporter: ["text", "html"],
       include: ["src/**/*.ts", "src/**/*.tsx"],
-      exclude: ["src/**/*.d.ts", "src/setupTests.ts", "src/main.tsx"],
+      exclude: ["src/**/*.d.ts", "src/setupTests.ts", "src/main.tsx", "src/**/types.ts"],
       watermarks: {
         statements: [80, 95],
         functions: [80, 95],
