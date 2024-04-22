@@ -2,6 +2,7 @@ import { useCounterStore } from "@/counterStore";
 import TimeSlotPill from "@/components/TimeSlotPill";
 import DatePill from "@/components/DatePill";
 import DoctorCard from "@/components/DoctorCard";
+import Button from "@/components/Button";
 
 function App() {
   const counter = useCounterStore((state) => state.counter);
@@ -132,6 +133,9 @@ function App() {
           onClick={() => console.log("clicked Jerry Doe")}
         />
       </ol>
+      <div className="p-4">
+        <Button label="Book Appointment" onClick={() => console.log("clicked Book Appointment")} />
+      </div>
     </div>
   );
 }
