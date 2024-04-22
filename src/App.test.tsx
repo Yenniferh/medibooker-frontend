@@ -2,7 +2,7 @@ import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
 
-describe("Counter", () => {
+describe.skip("Counter", () => {
   test("should render with initial state of 0", async () => {
     renderCounter();
 

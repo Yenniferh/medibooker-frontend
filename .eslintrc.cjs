@@ -5,6 +5,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:react-hooks/recommended",
     "prettier",
   ],
@@ -28,6 +29,7 @@ module.exports = {
     ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
+    "react/prop-types": "off", // We will use TypeScript's types for component props instead
   },
   settings: { react: { version: "detect" } },
 };

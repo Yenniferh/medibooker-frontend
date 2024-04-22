@@ -2,6 +2,7 @@
 /// <reference types="vitest" />
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import svgr from "vite-plugin-svgr";
 
 const localServer = {
   host: "localhost",
@@ -11,7 +12,7 @@ const localServer = {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), svgr()],
   resolve: {
     alias: {
       "@": "/src",
@@ -25,7 +26,7 @@ export default defineConfig({
     coverage: {
       reporter: ["text", "html"],
       include: ["src/**/*.ts", "src/**/*.tsx"],
-      exclude: ["src/**/*.d.ts", "src/setupTests.ts", "src/main.tsx"],
+      exclude: ["src/**/*.d.ts", "src/setupTests.ts", "src/main.tsx", "src/**/types.ts"],
       watermarks: {
         statements: [80, 95],
         functions: [80, 95],
