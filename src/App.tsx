@@ -1,5 +1,6 @@
 import { useCounterStore } from "@/counterStore";
 import TimeSlotPill from "@/components/TimeSlotPill";
+import DatePill from "@/components/DatePill";
 
 function App() {
   const counter = useCounterStore((state) => state.counter);
@@ -9,7 +10,34 @@ function App() {
   return (
     <div>
       <h1 className="text-center">MediBooker</h1>
-      <ol className="flex flex-wrap justify-center gap-2 xs:mx-auto xs:max-w-80">
+      <ol className="flex min-w-full gap-2 overflow-x-auto p-2 xs:mx-auto xs:w-[26rem] xs:min-w-0">
+        <DatePill date="2024-04-21" onClick={() => console.log("clicked 2024-04-21")} />
+        <DatePill date="2024-04-22" onClick={() => console.log("clicked 2024-04-22")} />
+        <DatePill date="2024-04-23" onClick={() => console.log("clicked 2024-04-23")} />
+        <DatePill date="2024-04-24" onClick={() => console.log("clicked 2024-04-24")} />
+        <DatePill date="2024-04-25" onClick={() => console.log("clicked 2024-04-25")} isSelected />
+        <DatePill date="2024-04-26" onClick={() => console.log("clicked 2024-04-26")} />
+        <DatePill date="2024-04-27" onClick={() => console.log("clicked 2024-04-27")} />
+        <DatePill date="2024-04-28" onClick={() => console.log("clicked 2024-04-28")} />
+        <DatePill date="2024-04-29" onClick={() => console.log("clicked 2024-04-29")} />
+        <DatePill date="2024-04-30" onClick={() => console.log("clicked 2024-04-30")} />
+        <DatePill date="2024-05-01" onClick={() => console.log("clicked 2024-05-01")} />
+        <DatePill date="2024-05-02" onClick={() => console.log("clicked 2024-05-02")} />
+        <DatePill date="2024-05-03" onClick={() => console.log("clicked 2024-05-03")} />
+        <DatePill date="2024-05-04" onClick={() => console.log("clicked 2024-05-04")} />
+        <DatePill date="2024-05-05" onClick={() => console.log("clicked 2024-05-05")} />
+        <DatePill date="2024-05-06" onClick={() => console.log("clicked 2024-05-06")} />
+        <DatePill date="2024-05-07" onClick={() => console.log("clicked 2024-05-07")} />
+        <DatePill date="2024-05-08" onClick={() => console.log("clicked 2024-05-08")} />
+        <DatePill date="2024-05-09" onClick={() => console.log("clicked 2024-05-09")} />
+        <DatePill date="2024-05-10" onClick={() => console.log("clicked 2024-05-10")} />
+        <DatePill date="2024-05-11" onClick={() => console.log("clicked 2024-05-11")} />
+        <DatePill date="2024-05-12" onClick={() => console.log("clicked 2024-05-12")} />
+        <DatePill date="2024-05-13" onClick={() => console.log("clicked 2024-05-13")} />
+        <DatePill date="2024-05-14" onClick={() => console.log("clicked 2024-05-14")} />
+        <DatePill date="2024-05-15" onClick={() => console.log("clicked 2024-05-15")} />
+      </ol>
+      <ol className="flex flex-wrap justify-center gap-2 pt-1 xs:mx-auto xs:max-w-80">
         <TimeSlotPill hour="08:00 AM" onClick={() => console.log("clicked 08:00 AM")} />
         <TimeSlotPill hour="09:00 AM" onClick={() => console.log("clicked 09:00 AM")} />
         <TimeSlotPill hour="10:00 AM" onClick={() => console.log("clicked 10:00 AM")} isSelected />
