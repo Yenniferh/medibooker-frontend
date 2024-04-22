@@ -1,6 +1,7 @@
 import { useCounterStore } from "@/counterStore";
 import TimeSlotPill from "@/components/TimeSlotPill";
 import DatePill from "@/components/DatePill";
+import DoctorCard from "@/components/DoctorCard";
 
 function App() {
   const counter = useCounterStore((state) => state.counter);
@@ -10,6 +11,21 @@ function App() {
   return (
     <div>
       <h1 className="text-center">MediBooker</h1>
+      <div>
+        <p className="text-lg">Counter: {counter}</p>
+        <button
+          className="mx-1 my-1 rounded-sm bg-blue-50 p-2 text-sm text-blue-600"
+          onClick={increment}
+        >
+          Increment
+        </button>
+        <button
+          className="mx-1 my-1 rounded-sm bg-blue-50 p-2 text-sm text-blue-600"
+          onClick={decrease}
+        >
+          Decrease
+        </button>
+      </div>
       <ol className="flex min-w-full gap-2 overflow-x-auto p-2 xs:mx-auto xs:w-[26rem] xs:min-w-0">
         <DatePill date="2024-04-21" onClick={() => console.log("clicked 2024-04-21")} />
         <DatePill date="2024-04-22" onClick={() => console.log("clicked 2024-04-22")} />
@@ -51,21 +67,71 @@ function App() {
         <TimeSlotPill hour="06:00 PM" onClick={() => console.log("clicked 06:00 PM")} />
         <TimeSlotPill hour="07:00 PM" onClick={() => console.log("clicked 07:00 PM")} />
       </ol>
-      <div>
-        <p className="text-lg">Counter: {counter}</p>
-        <button
-          className="mx-1 my-1 rounded-sm bg-blue-50 p-2 text-sm text-blue-600"
-          onClick={increment}
-        >
-          Increment
-        </button>
-        <button
-          className="mx-1 my-1 rounded-sm bg-blue-50 p-2 text-sm text-blue-600"
-          onClick={decrease}
-        >
-          Decrease
-        </button>
-      </div>
+      <ol className="flex flex-col gap-4 px-4 py-5">
+        <DoctorCard
+          name="John Doe"
+          speciality="Cardiologist"
+          yearsOfExperience={10}
+          consultationPrice={100}
+          onClick={() => console.log("clicked John Doe")}
+        />
+        <DoctorCard
+          name="Jane Doe"
+          speciality="Dermatologist"
+          yearsOfExperience={15}
+          consultationPrice={150}
+          onClick={() => console.log("clicked Jane Doe")}
+        />
+        <DoctorCard
+          name="James Doe"
+          speciality="Endocrinologist"
+          yearsOfExperience={20}
+          consultationPrice={200}
+          onClick={() => console.log("clicked James Doe")}
+        />
+        <DoctorCard
+          name="Jill Doe"
+          speciality="Gastroenterologist"
+          yearsOfExperience={25}
+          consultationPrice={250}
+          onClick={() => console.log("clicked Jill Doe")}
+        />
+        <DoctorCard
+          name="Jack Doe"
+          speciality="Hematologist"
+          yearsOfExperience={30}
+          consultationPrice={300}
+          onClick={() => console.log("clicked Jack Doe")}
+        />
+        <DoctorCard
+          name="Jenny Doe"
+          speciality="Immunologist"
+          yearsOfExperience={35}
+          consultationPrice={350}
+          onClick={() => console.log("clicked Jenny Doe")}
+        />
+        <DoctorCard
+          name="Josh Doe"
+          speciality="Nephrologist"
+          yearsOfExperience={40}
+          consultationPrice={400}
+          onClick={() => console.log("clicked Josh Doe")}
+        />
+        <DoctorCard
+          name="Jessica Doe"
+          speciality="Neurologist"
+          yearsOfExperience={45}
+          consultationPrice={450}
+          onClick={() => console.log("clicked Jessica Doe")}
+        />
+        <DoctorCard
+          name="Jerry Doe"
+          speciality="Oncologist"
+          yearsOfExperience={50}
+          consultationPrice={500}
+          onClick={() => console.log("clicked Jerry Doe")}
+        />
+      </ol>
     </div>
   );
 }
