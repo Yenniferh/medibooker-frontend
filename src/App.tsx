@@ -3,6 +3,8 @@ import TimeSlotPill from "@/components/TimeSlotPill";
 import DatePill from "@/components/DatePill";
 import DoctorCard from "@/components/DoctorCard";
 import Button from "@/components/Button";
+import Input from "@/components/Input";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 function App() {
   const counter = useCounterStore((state) => state.counter);
@@ -133,6 +135,7 @@ function App() {
           onClick={() => console.log("clicked Jerry Doe")}
         />
       </ol>
+      <Form />
       <div className="p-4">
         <Button label="Book Appointment" onClick={() => console.log("clicked Book Appointment")} />
       </div>
@@ -141,3 +144,43 @@ function App() {
 }
 
 export default App;
+
+type FormValues = {
+  username: string;
+  password: string;
+};
+
+const Form = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>({
+    mode: "all",
+  });
+  const onSubmit: SubmitHandler<FormValues> = (data) => console.log(data);
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="px-4 py-3">
+      <Input
+        label="Username"
+        type="text"
+        name="username"
+        required
+        register={register}
+        placeholder="Enter your username"
+        error={errors.username}
+      />
+      <Input
+        label="Password"
+        type="password"
+        name="password"
+        register={register}
+        placeholder="Enter your password"
+        error={errors.password}
+      />
+      <div className="pt-6">
+        <Button label="Submit" type="submit" />
+      </div>
+    </form>
+  );
+};

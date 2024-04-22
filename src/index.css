@@ -5,3 +5,19 @@
 #root {
   background-color: #F5FDFF;
 }
+
+.input-base {
+  @apply placeholder:font-body rounded-md border border-teal-gray border-opacity-25 px-3 py-2 text-sm placeholder:text-teal-gray placeholder:text-opacity-60 hover:border-transparent hover:ring-2 hover:ring-teal-gray hover:ring-opacity-25 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-teal;
+}
+
+.input-error {
+  @apply border-action-red hover:ring-action-red focus:ring-action-red;
+}
+
+.label-base {
+  @apply font-body pb-1 text-sm text-deep-teal;
+}
+
+.label-error {
+  @apply text-action-red;
+}
