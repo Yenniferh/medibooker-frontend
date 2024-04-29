@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // import SearchPage from '@/views/Search';
-// import DoctorPage from '@/views/Doctor';
-import BookingPage from '@/views/Book';
+import DoctorPage from "@/views/Doctor";
+import BookingPage from "@/views/Book";
 import SuccessPage from "@/views/Success";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <Router>
       <Routes>
         {/* <Route path="/" element={<SearchPage />}/> */}
-        {/* <Route path="/doctor/:doctorId" element={<DoctorPage />} /> */}
+        <Route path="/doctor/:doctorId" element={<DoctorPage />} />
         <Route path="/doctor/:doctorId/book/:timeSlot" element={<BookingPage />} />
         <Route path="/success" element={<SuccessPage />} />
         <Route path="*" element={<>Not found</>} />
