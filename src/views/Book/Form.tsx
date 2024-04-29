@@ -66,7 +66,7 @@ const Form = () => {
         error={errors.comment}
       />
       <div className="pt-6">
-        <Button label="Submit" type="submit" />
+        <Button type="submit">Submit</Button>
       </div>
     </form>
   );

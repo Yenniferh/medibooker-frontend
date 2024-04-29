@@ -17,7 +17,7 @@ const SuccessPage = () => {
           Thank you for using MediBooker!
         </p>
         <div className="flex w-full justify-center pt-8 md:w-96 md:self-center md:pt-12">
-          <Button onClick={() => navigate("/")} label="Book another appointment" />
+          <Button onClick={() => navigate("/")}>Book another appointment</Button>
         </div>
       </div>
     </div>
