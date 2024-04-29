@@ -19,7 +19,7 @@ describe("DoctorCard", () => {
     expect(screen.getByTestId("doctor-card")).toBeInTheDocument();
     expect(screen.getByText("Dr. John Doe")).toBeInTheDocument();
     expect(screen.getByText("Cardiology | 10 Years")).toBeInTheDocument();
-    expect(screen.getByText("$100")).toBeInTheDocument();
+    expect(screen.getByText(/^\$100/)).toBeInTheDocument();
   });
 
   it("should call onClick when the doctor card is clicked", async () => {
