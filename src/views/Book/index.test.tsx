@@ -3,7 +3,7 @@ import { MemoryRouter, Route, Routes } from "react-router-dom";
 import BookingPage from "./index";
 
 describe("BookingPage", () => {
-  test("renders the page with correct doctorId and timeSlot", () => {
+  it("renders the page with correct doctorId and timeSlot", () => {
     const doctorId = "123";
     const timeSlot = "2022-01-01T09:00:00";
 

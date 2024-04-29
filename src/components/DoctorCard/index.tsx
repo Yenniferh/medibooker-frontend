@@ -20,12 +20,12 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
       </div>
       <div className="flex w-auto flex-1 flex-col justify-between p-2">
         <div className="">
-          <h2 className="font-headings text-deep-teal">{name}</h2>
+          <h2 className="font-headings leading-none text-deep-teal">{name}</h2>
           <p className="font-headings text-xs text-teal-gray">
             {speciality} | {yearsOfExperience} Years
           </p>
         </div>
-        <p className="font-body text-sm text-teal">${consultationPrice}</p>
+        <p className="font-body text-sm font-medium text-teal">${consultationPrice}/hour</p>
       </div>
     </li>
   );

@@ -20,7 +20,7 @@ const DoctorPage = () => {
           <p className="font-headings text-xs tracking-tight text-teal-gray md:text-sm">
             Dermatologist | 10 Years
           </p>
-          <p className="mt-2 font-body text-sm text-teal md:text-base">${150}</p>
+          <p className="mt-2 font-body text-sm font-medium text-teal md:text-base">${150}</p>
         </div>
       </section>
       <section className="mt-5 flex flex-col gap-4">
