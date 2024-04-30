@@ -18,4 +18,11 @@ yarn install
 yarn dev
 ```
 
+## Env
+
+Create a `.env` file containing the following line
+```plain
+VITE_API_URL=the-url
+```
+
 A new tab should open pointing to http://localhost:3003/
