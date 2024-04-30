@@ -1,6 +1,12 @@
-import DoctorCard from "@/components/DoctorCard";
+import { useService } from "@/hooks/useService";
+import { fetchDoctors } from "./request";
+import { Doctor } from "@/types/doctor";
+import DoctorList from "@/features/DoctorList";
 
 const SearchPage = () => {
+  const { loading, data, error } = useService<Doctor[]>(fetchDoctors);
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
   return (
     <div className="">
       <div
@@ -23,69 +29,7 @@ const SearchPage = () => {
         </div>
       </div>
       <ol className="flex flex-col gap-4 px-4 py-5">
-        <DoctorCard
-          name="John Doe"
-          speciality="Cardiologist"
-          yearsOfExperience={10}
-          consultationPrice={100}
-          onClick={() => console.log("clicked John Doe")}
-        />
-        <DoctorCard
-          name="Jane Doe"
-          speciality="Dermatologist"
-          yearsOfExperience={15}
-          consultationPrice={150}
-          onClick={() => console.log("clicked Jane Doe")}
-        />
-        <DoctorCard
-          name="James Doe"
-          speciality="Endocrinologist"
-          yearsOfExperience={20}
-          consultationPrice={200}
-          onClick={() => console.log("clicked James Doe")}
-        />
-        <DoctorCard
-          name="Jill Doe"
-          speciality="Gastroenterologist"
-          yearsOfExperience={25}
-          consultationPrice={250}
-          onClick={() => console.log("clicked Jill Doe")}
-        />
-        <DoctorCard
-          name="Jack Doe"
-          speciality="Hematologist"
-          yearsOfExperience={30}
-          consultationPrice={300}
-          onClick={() => console.log("clicked Jack Doe")}
-        />
-        <DoctorCard
-          name="Jenny Doe"
-          speciality="Immunologist"
-          yearsOfExperience={35}
-          consultationPrice={350}
-          onClick={() => console.log("clicked Jenny Doe")}
-        />
-        <DoctorCard
-          name="Josh Doe"
-          speciality="Nephrologist"
-          yearsOfExperience={40}
-          consultationPrice={400}
-          onClick={() => console.log("clicked Josh Doe")}
-        />
-        <DoctorCard
-          name="Jessica Doe"
-          speciality="Neurologist"
-          yearsOfExperience={45}
-          consultationPrice={450}
-          onClick={() => console.log("clicked Jessica Doe")}
-        />
-        <DoctorCard
-          name="Jerry Doe"
-          speciality="Oncologist"
-          yearsOfExperience={50}
-          consultationPrice={500}
-          onClick={() => console.log("clicked Jerry Doe")}
-        />
+        <DoctorList items={data ?? []} />
       </ol>
     </div>
   );

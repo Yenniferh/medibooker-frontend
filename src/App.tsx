@@ -9,8 +9,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<SearchPage />} />
-        <Route path="/doctor/:doctorId" element={<DoctorPage />} />
-        <Route path="/doctor/:doctorId/book/:timeSlot" element={<BookingPage />} />
+        <Route path="/doctors/:doctorId" element={<DoctorPage />} />
+        <Route path="/doctors/:doctorId/book/:timeSlot" element={<BookingPage />} />
         <Route path="/success" element={<SuccessPage />} />
         <Route path="*" element={<>Not found</>} />
       </Routes>

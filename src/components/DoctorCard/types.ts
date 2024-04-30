@@ -3,5 +3,5 @@ export type DoctorCardProps = {
   speciality: string;
   yearsOfExperience: number;
   consultationPrice: number;
-  onClick: () => void;
+  url: string;
 };
