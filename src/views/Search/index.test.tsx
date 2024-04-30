@@ -21,23 +21,23 @@ describe("SearchPage", () => {
       experience: 15,
       consultationPrice: 150,
       specializations: [{ name: "Cardiology" }],
-    }
+    },
   ];
 
   const component = (
     <MemoryRouter initialEntries={["/doctor/1"]}>
-    <Routes>
-      <Route
-        path="/doctor/:doctorId"
-        element={<SearchPage />
-        }
-      />
-    </Routes>
-  </MemoryRouter>
+      <Routes>
+        <Route path="/doctor/:doctorId" element={<SearchPage />} />
+      </Routes>
+    </MemoryRouter>
   );
 
   beforeEach(async () => {
-    vi.spyOn(useService, "useService").mockReturnValue({data: doctors, error: undefined, loading: false});
+    vi.spyOn(useService, "useService").mockReturnValue({
+      data: doctors,
+      error: undefined,
+      loading: false,
+    });
     await act(async () => {
       render(component);
     });
@@ -47,12 +47,12 @@ describe("SearchPage", () => {
     vi.clearAllMocks();
   });
 
-  it("renders search input", async () => {
+  it("renders search input", () => {
     const searchInput = screen.getByPlaceholderText("Search by name or specialization");
     expect(searchInput).toBeInTheDocument();
   });
 
-  it("renders doctor cards", async () => {
+  it("renders doctor cards", () => {
     const doctorCards = screen.getAllByTestId("doctor-card");
     expect(doctorCards).toHaveLength(2);
   });
