@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import DoctorDetails from "./DoctorDetails";
+import DoctorAvailability from "./DoctorAvailability";
 
 const DoctorPage = () => {
   const { doctorId } = useParams();
@@ -7,7 +8,12 @@ const DoctorPage = () => {
     return <div>Doctor not found</div>;
   }
 
-  return <DoctorDetails id={doctorId} />;
+  return (
+    <div className="max-w-2xl p-5 sm:mx-auto sm:pt-8 lg:pt-12">
+      <DoctorDetails id={doctorId} />
+      <DoctorAvailability id={doctorId} />
+    </div>
+  );
 };
 
 export default DoctorPage;

@@ -9,7 +9,7 @@ const TimeSlotPill: React.FC<TimeSlotPillProps> = ({ hour, onClick, isSelected =
     <li
       data-testid="time-slot-pill"
       onClick={onClick}
-      className={`rounded-xl px-4 py-1.5 ${selectedClass}`}
+      className={`cursor-pointer rounded-xl px-4 py-1.5 ${selectedClass}`}
     >
       <span
         className={`flex min-w-16 justify-center self-center font-body text-xs font-medium ${selectedTextClass}`}
