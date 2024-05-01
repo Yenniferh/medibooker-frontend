@@ -1,8 +1,9 @@
 import { act, render, screen } from "@testing-library/react";
 import SearchPage from "./index";
 import { Doctor } from "@/types/doctor";
-import * as useService from "@/hooks/useService";
+import * as useAxiosFetch from "@/hooks/useAxiosFetch";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { AxiosError } from "axios";
 
 describe("SearchPage", () => {
   const doctors: Doctor[] = [
@@ -32,28 +33,68 @@ describe("SearchPage", () => {
     </MemoryRouter>
   );
 
-  beforeEach(async () => {
-    vi.spyOn(useService, "useService").mockReturnValue({
-      data: doctors,
-      error: undefined,
-      loading: false,
-    });
-    await act(async () => {
+  describe("when loading", () => {
+    beforeEach(() => {
+      vi.spyOn(useAxiosFetch, "useAxiosFetch").mockReturnValue({
+        data: null,
+        error: null,
+        loading: true,
+      });
       render(component);
     });
+
+    afterEach(() => {
+      vi.clearAllMocks();
+    });
+
+    it("renders loading state", () => {
+      expect(screen.getByText("Loading...")).toBeInTheDocument();
+    });
   });
 
-  afterEach(() => {
-    vi.clearAllMocks();
+  describe("when error", () => {
+    beforeEach(() => {
+      vi.spyOn(useAxiosFetch, "useAxiosFetch").mockReturnValue({
+        data: null,
+        error: new Error("An error occurred") as AxiosError,
+        loading: false,
+      });
+      render(component);
+    });
+
+    afterEach(() => {
+      vi.clearAllMocks();
+    });
+
+    it("renders error message", () => {
+      expect(screen.getByText("Error: An error occurred")).toBeInTheDocument();
+    });
   });
 
-  it("renders search input", () => {
-    const searchInput = screen.getByPlaceholderText("Search by name or specialization");
-    expect(searchInput).toBeInTheDocument();
-  });
+  describe("when loaded", () => {
+    beforeEach(async () => {
+      vi.spyOn(useAxiosFetch, "useAxiosFetch").mockReturnValue({
+        data: doctors,
+        error: null,
+        loading: false,
+      });
+      await act(async () => {
+        render(component);
+      });
+    });
 
-  it("renders doctor cards", () => {
-    const doctorCards = screen.getAllByTestId("doctor-card");
-    expect(doctorCards).toHaveLength(2);
+    afterEach(() => {
+      vi.clearAllMocks();
+    });
+
+    it("renders search input", () => {
+      const searchInput = screen.getByPlaceholderText("Search by name or specialization");
+      expect(searchInput).toBeInTheDocument();
+    });
+
+    it("renders doctor cards", () => {
+      const doctorCards = screen.getAllByTestId("doctor-card");
+      expect(doctorCards).toHaveLength(2);
+    });
   });
 });

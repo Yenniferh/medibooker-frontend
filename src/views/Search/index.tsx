@@ -1,12 +1,17 @@
-import { useService } from "@/hooks/useService";
-import { fetchDoctors } from "./request";
-import { Doctor } from "@/types/doctor";
+import { Doctor, RemoteDoctor, mapRemoteDoctorToLocal } from "@/types/doctor";
 import DoctorList from "@/features/DoctorList";
+import { useAxiosFetch } from "@/hooks/useAxiosFetch";
+import { endpoints } from "@/api/endpoints";
 
 const SearchPage = () => {
-  const { loading, data, error } = useService<Doctor[]>(fetchDoctors);
+  const { loading, data, error } = useAxiosFetch<RemoteDoctor[]>(`${endpoints.doctors}`, {
+    method: "GET",
+  });
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
+  const doctors: Doctor[] = data?.map(mapRemoteDoctorToLocal) ?? [];
+
   return (
     <div className="">
       <div
@@ -29,7 +34,7 @@ const SearchPage = () => {
         </div>
       </div>
       <ol className="flex flex-col gap-4 px-4 py-5">
-        <DoctorList items={data ?? []} />
+        <DoctorList items={doctors} />
       </ol>
     </div>
   );
