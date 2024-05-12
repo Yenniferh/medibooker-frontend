@@ -1,12 +1,7 @@
-import { useService } from "@/hooks/useService";
-import { fetchDoctors } from "./request";
-import { Doctor } from "@/types/doctor";
-import DoctorList from "@/features/DoctorList";
+import SearchInput from "./SearchInput";
+import SearchResult from "./SearchResult";
 
 const SearchPage = () => {
-  const { loading, data, error } = useService<Doctor[]>(fetchDoctors);
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
   return (
     <div className="">
       <div
@@ -17,19 +12,11 @@ const SearchPage = () => {
           <h1 className="mb-2 font-headings text-xl capitalize text-white md:mb-4 md:text-2xl">
             Let’s find your doctor
           </h1>
-          <label htmlFor="search" className="hidden">
-            Search
-          </label>
-          <input
-            id="search"
-            className="w-full rounded-3xl border-none bg-white bg-opacity-40 px-4 py-3 font-body text-sm text-deep-teal backdrop-blur-sm placeholder:text-white focus:ring-white"
-            type="text"
-            placeholder="Search by name or specialization"
-          />
+          <SearchInput />
         </div>
       </div>
       <ol className="flex flex-col gap-4 px-4 py-5">
-        <DoctorList items={data ?? []} />
+        <SearchResult />
       </ol>
     </div>
   );

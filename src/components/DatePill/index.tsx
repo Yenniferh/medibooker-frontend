@@ -13,7 +13,7 @@ const DatePill: React.FC<DatePillProps> = ({ date, onClick, isSelected = false }
     <li
       data-testid="date-pill"
       onClick={onClick}
-      className={`flex min-w-12 flex-col justify-center rounded-2xl p-2 ${selectedClass}`}
+      className={`flex min-w-12 cursor-pointer flex-col justify-center rounded-2xl p-2 ${selectedClass}`}
     >
       <span className={`${selectedTextClass} text-center font-headings text-xs font-extrabold`}>
         {weekday}
